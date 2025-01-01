@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 from flask_cors import CORS
 import mysql.connector
@@ -66,4 +67,5 @@ def get_videos_by_category(category_id):
 
 # Run the application
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Get the port from the environment
+    app.run(debug=True, host='0.0.0.0', port=port)  # Use host '0.0.0.0' to allow access externally
